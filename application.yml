@@ -1,1 +1,2 @@
-
+db:
+  connection: jdbc:postgresql://foo:foo
