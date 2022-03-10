@@ -8,7 +8,7 @@ spring:
             - Path=/v1/product/**,/v1/category/**
           filters:
             - RewritePath=/(?<segment>.*), /$\{segment}
-            - name: Hystrix
+            - name: CircuitBreaker
               args:
                 name: product-category
                 fallbackUri: forward:/fb/product-category
@@ -19,7 +19,7 @@ spring:
             - Path=/v1/basket/**,/v1/basketProduct/**
           filters:
             - RewritePath=/(?<segment>.*), /$\{segment}
-            - name: Hystrix
+            - name: CircuitBreaker
               args:
                 name: basket
                 fallbackUri: forward:/fb/basket
@@ -30,7 +30,7 @@ spring:
             - Path=/v1/order/**
           filters:
             - RewritePath=/(?<segment>.*), /$\{segment}
-            - name: Hystrix
+            - name: CircuitBreaker
               args:
                 name: order
                 fallbackUri: forward:/fb/order
@@ -41,7 +41,7 @@ spring:
             - Path=/v1/images/**
           filters:
             - RewritePath=/(?<segment>.*), /$\{segment}
-            - name: Hystrix
+            - name: CircuitBreaker
               args:
                 name: images
                 fallbackUri: forward:/fb/images
@@ -52,7 +52,7 @@ spring:
             - Path=/v1/user/**,/v1/cart/**,/v1/address/**
           filters:
             - RewritePath=/(?<segment>.*), /$\{segment}
-            - name: Hystrix
+            - name: CircuitBreaker
               args:
                 name: user
                 fallbackUri: forward:/fb/user           
