@@ -1,8 +1,4 @@
 spring:
-  boot:
-    admin:
-      client:
-        url: http://localhost:8085
   cloud:
     config:
       uri: http://localhost:8888
@@ -12,11 +8,4 @@ eureka:
   client:
     register-with-eureka: false
     fetch-registry: false
-management:
-  endpoints:
-    web:
-      exposure:
-        include: "*"
-  endpoint:
-    health:
-      show-details: always
+
