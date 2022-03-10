@@ -1,0 +1,57 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: product-category
+          uri: lb://PRODUCT-CATEGORY
+          predicates:
+            - Path=/v1/product/**,/v1/category/**
+          filters:
+            - RewritePath=/(?<segment>.*), /$\{segment}
+            - name: Hystrix
+              args:
+                name: product-category
+                fallbackUri: forward:/fb/product-category
+
+        - id: basket
+          uri: lb://BASKET
+          predicates:
+            - Path=/v1/basket/**,/v1/basketProduct/**
+          filters:
+            - RewritePath=/(?<segment>.*), /$\{segment}
+            - name: Hystrix
+              args:
+                name: basket
+                fallbackUri: forward:/fb/basket
+                
+        - id: order
+          uri: lb://ORDER
+          predicates:
+            - Path=/v1/order/**
+          filters:
+            - RewritePath=/(?<segment>.*), /$\{segment}
+            - name: Hystrix
+              args:
+                name: order
+                fallbackUri: forward:/fb/order
+                
+        - id: images
+          uri: lb://IMAGES
+          predicates:
+            - Path=/v1/images/**
+          filters:
+            - RewritePath=/(?<segment>.*), /$\{segment}
+            - name: Hystrix
+              args:
+                name: images
+                fallbackUri: forward:/fb/images
+
+server:
+  port: 8088
+  
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+    register-with-eureka: true
+    fetch-registry: true
