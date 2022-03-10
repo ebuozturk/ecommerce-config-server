@@ -45,6 +45,17 @@ spring:
               args:
                 name: images
                 fallbackUri: forward:/fb/images
+                
+        - id: user
+          uri: lb://USER
+          predicates:
+            - Path=/v1/user/**,/v1/cart/**,/v1/address/**
+          filters:
+            - RewritePath=/(?<segment>.*), /$\{segment}
+            - name: Hystrix
+              args:
+                name: user
+                fallbackUri: forward:/fb/user           
 
 server:
   port: 8088
