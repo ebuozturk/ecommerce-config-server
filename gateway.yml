@@ -9,6 +9,7 @@ spring:
           '[/**]':
             allowedOrigins: "*"
             allowedMethods: "*"
+            allowedHeaders: "*"
       routes:
         - id: product-category
           uri: lb://PRODUCT-CATEGORY
