@@ -1,3 +1,6 @@
+server:
+  port: 8088
+  
 spring:
   cloud:
     gateway:
@@ -62,9 +65,6 @@ spring:
                 name: user
                 fallbackUri: forward:/fb/user           
 
-server:
-  port: 8088
-  
 eureka:
   client:
     service-url:
