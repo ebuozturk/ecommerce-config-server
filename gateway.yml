@@ -4,6 +4,11 @@ server:
 spring:
   cloud:
     gateway:
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins: "*"
+            allowedMethods: "*"
       routes:
         - id: product-category
           uri: lb://PRODUCT-CATEGORY
