@@ -5,12 +5,12 @@ spring:
   cloud:
     gateway:
       globalcors:
-          cors-configurations:
-             '[/**]':
-             allowed-origins: "*"
-             allowed-methods: "*"
-             allowed-headers: "*"
-             allow-credentials: true
+         cors-configurations:
+           '[/**]':
+              allowed-origins: "*"
+              allowed-methods: "*"
+              allowed-headers: "*"
+              allow-credentials: true
 
       routes:
         - id: product-category
