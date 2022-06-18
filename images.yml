@@ -17,5 +17,5 @@ eureka:
     service-url:
       defaultZone: http://localhost:8761/eureka
       
-bucket.path.product: ebu-ecommerce/product
+bucket.path.product: ebuozturk-ecommerce/product
 image.url.product: /v1/images/product
