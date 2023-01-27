@@ -68,7 +68,18 @@ spring:
             - name: CircuitBreaker
               args:
                 name: user
-                fallbackUri: forward:/fb/user           
+                fallbackUri: forward:/fb/user   
+                
+        - id: payment-server
+          uri: lb://payment-server
+          predicates:
+            - Path=/v1/payment/**
+          filters:
+            - RewritePath=/(?<segment>.*), /$\{segment}
+            - name: CircuitBreaker
+              args:
+                name: payment-server
+                fallbackUri: forward:/fb/payment
 
 eureka:
   client:
