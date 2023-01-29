@@ -79,7 +79,7 @@ spring:
             - name: CircuitBreaker
               args:
                 name: payment-server
-                fallbackUri: forward:/fb/payment
+                fallbackUri: forward:/fb/payment-server
 
 eureka:
   client:
